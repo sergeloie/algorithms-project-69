@@ -21,10 +21,10 @@ class SearchEngineTest {
                 Map.of("id", "doc2", "text", doc2),
                 Map.of("id", "doc3", "text", doc3)
         );
-        List<String> result = SearchEngine.search(docs, "!pint00!");
+        List<String> result = SearchEngine.search(docs, "shoot");
         List<String> expected = new ArrayList<>();
-        expected.add("doc1");
         expected.add("doc2");
+        expected.add("doc1");
         assertEquals(expected, result);
         //System.out.println(result);
     }
