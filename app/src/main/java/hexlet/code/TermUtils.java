@@ -50,4 +50,18 @@ public class TermUtils {
                 .forEach(x -> result.add(x.get("id")));
         return result;
     }
+
+    public static String getStringFromTerm(Pattern term) {
+        String result = term.toString();
+        return result.substring(4, result.length() - 4);
+    }
+
+    public static List<String> parseTextToWords(String text) {
+        List<String> result = new ArrayList<>();
+        List<Pattern> terms = splitStringIntoTerms(text);
+        for (Pattern term : terms) {
+            result.add(getStringFromTerm(term));
+        }
+        return result;
+    }
 }
