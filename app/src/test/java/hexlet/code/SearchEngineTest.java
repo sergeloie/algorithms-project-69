@@ -27,6 +27,6 @@ class SearchEngineTest {
         expected.add("doc2");
         expected.add("doc1");
         assertEquals(expected, result);
-        //System.out.println(result);
+        System.out.println(result);
     }
 }
