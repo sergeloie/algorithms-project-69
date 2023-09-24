@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class SearchEngine {
     public static List<String> search(List<Map<String, String>> docs, String str) {
         List<String> result = new ArrayList<>();
-        Pattern pattern = getWordPattern(str);
+        Pattern pattern = getTermFromToken(str);
 
         Comparator<Map<String, String>> byWordCount;
         byWordCount = Comparator.comparingInt(doc -> countOccurrences(doc.get("text"), str));
@@ -25,7 +25,7 @@ public class SearchEngine {
     }
 
     public static int countOccurrences(String sentence, String word) {
-        Pattern pattern = getWordPattern(word);
+        Pattern pattern = getTermFromToken(word);
         Matcher matcher = pattern.matcher(sentence);
         int count = 0;
 
@@ -35,12 +35,21 @@ public class SearchEngine {
         return count;
     }
 
-    public static Pattern getWordPattern(String word) {
+    public static Pattern getTermFromToken(String word) {
         String term = Pattern.compile("[a-zA-Z]+")
                 .matcher(word)
                 .results()
                 .map(MatchResult::group)
                 .collect(Collectors.joining());
         return Pattern.compile("\\b" + Pattern.quote(term) + "\\b", Pattern.CASE_INSENSITIVE);
+    }
+
+    public static List<Pattern> splitStringIntoTerms(String sentence) {
+        String[] tokens = sentence.split(" ");
+        List<Pattern> result = new ArrayList<>();
+        for(String token : tokens) {
+            result.add(getTermFromToken(token));
+        }
+        return result;
     }
 }
