@@ -1,7 +1,11 @@
 package hexlet.code;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static hexlet.code.ReverseIndex.createReverseIndex;
 
@@ -28,6 +32,17 @@ public class TFIDF {
         double tf = calculateTF(doc, word);
         double idf = calculateIDF(docs, word);
         return tf * idf;
+    }
+
+    public static List<Map<String, Double>> getTFIDFList(List<Map<String, String>> docs, String word) {
+        List<Map<String, Double>> result = new ArrayList<>();
+        for (Map<String, String> doc : docs) {
+            double x = calculateTFIDF(docs, doc.get("text"), word);
+            result.add((Map<String, Double>) new HashMap<>().put(word, x));
+        }
+        return result.stream()
+                .sorted(Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue()))
+                .collect(Collectors.toList());
     }
 
 
