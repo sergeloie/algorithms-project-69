@@ -16,7 +16,7 @@ public class TermUtils {
      * and returns the term
      */
     public static Pattern getTermFromToken(String word) {
-        String term = Pattern.compile("[a-zA-Zа-яА-Я]+")
+        String term = Pattern.compile("[a-zA-Z]+")
                 .matcher(word)
                 .results()
                 .map(MatchResult::group)
