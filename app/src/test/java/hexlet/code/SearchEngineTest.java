@@ -21,7 +21,7 @@ class SearchEngineTest {
                 Map.of("id", "doc2", "text", doc2),
                 Map.of("id", "doc3", "text", doc3)
         );
-        List<String> result = SearchEngine.search(docs, "me");
+        List<String> result = SearchEngine.searchtfidf(docs, "me");
         List<String> expected = new ArrayList<>();
         expected.add("doc3");
         expected.add("doc2");
