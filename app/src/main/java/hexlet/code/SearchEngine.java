@@ -8,10 +8,10 @@ import static hexlet.code.TFIDF.getTFIDFList;
 
 public class SearchEngine {
      /**
-     * @param docs принимает на вход корпус документов
-     * @param str принимает на вход строку (предложение)
-     * @return возвращает список докуметов, где встречается любое из слов,
-     * отсортированный по количеству вхождения слов в документы
+      * @param docs accepts a corpus of documents as input
+      * @param str takes a string (sentence) as input
+      * @return returns a list of documents where any of the words occur
+      * sorted by the number of occurrences of words in documents
      */
 //    public static List<String> search(List<Map<String, String>> docs, String str) {
 //        List<Pattern> termsList = TermUtils.splitStringIntoTerms(str);

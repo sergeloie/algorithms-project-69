@@ -10,10 +10,10 @@ import static hexlet.code.TermUtils.parseTextToWords;
 
 public class ReverseIndex {
     /**
-     * @param index принимает на вход Обратный Индекс
-     * @param word принимает на вход слово
-     * @param docId принимает на вход идентификатор документа
-     * @append добавляет к Обратному Индексу слово и список документов, где оно встречается
+     * @param index takes as input the Reverse Index
+     * @param word takes a word as input
+     * @param docId takes the document identifier as input
+     * @append adds a word and a list of documents where it occurs to the Reverse Index
      */
     public static void appendReverseIndex(Map<String, List<String>> index, String word, String docId) {
         if (!index.containsKey(word)) {
@@ -27,8 +27,8 @@ public class ReverseIndex {
     }
 
     /**
-     * @param docs принимает на вход корпус документов
-     * @return строит для коруса документов обратный индекс
+     * @param docs accepts a corpus of documents as input
+     * @return builds a reverse index for the document corpus
      */
     public static Map<String, List<String>> createReverseIndex(List<Map<String, String>> docs) {
         Map<String, List<String>> result = new HashMap<>();

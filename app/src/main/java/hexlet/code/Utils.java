@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class Utils {
 
     /**
-     * @param list принимает на вход список строк, где могут быть повторения
-     * @return возвращает список уникальных строк, отсортированных по количеству вхождений в исходный список
+     * @param list takes as input a list of strings that may contain repetitions
+     * @return returns a list of unique strings, sorted by the number of occurrences in the original list
      */
     public static List<String> collapseListOfDifferentStringsIntoSortedListOfUniqueStrings(List<String> list) {
         return list.stream()

@@ -11,8 +11,9 @@ import java.util.stream.Collectors;
 
 public class TermUtils {
     /**
-     * @param word принимает на вход строку
-     * @return извлекает из строки только буквы, добавляет в начале и в конце признак конца слова и возвращает терм
+     * @param word accepts a string as input
+     * @return extracts only letters from the string, adds a word terminator at the beginning and end,
+     * and returns the term
      */
     public static Pattern getTermFromToken(String word) {
         String term = Pattern.compile("[a-zA-Zа-яА-Я]+")
@@ -24,8 +25,8 @@ public class TermUtils {
     }
 
     /**
-     * @param sentence получает на вход строку (предложение)
-     * @return делит входную строку на слова по пробелам и возвращает список термов (для каждого слова)
+     * @param sentence receives a string (sentence) as input
+     * @return splits the input string into words by spaces and returns a list of terms (for each word)
      */
     public static List<Pattern> splitStringIntoTerms(String sentence) {
         String[] tokens = sentence.split(" ");
@@ -37,9 +38,9 @@ public class TermUtils {
     }
 
     /**
-     * @param sentence получает на вход строку (предложение)
-     * @param term получает на вход терм
-     * @return считает количество вхождений терма в предложение
+     * @param sentence receives a string (sentence) as input
+     * @param term receives a term as input
+     * @return counts the number of occurrences of a term in a sentence
      */
     public static int countOccurrences(String sentence, Pattern term) {
         Matcher matcher = term.matcher(sentence);
@@ -52,9 +53,9 @@ public class TermUtils {
     }
 
     /**
-     * @param docs принимает на вход корпус документов
-     * @param term принимает на вход терм
-     * @return возвращает список id документов, отсортированный по частоте вхождения терма в документ
+     * @param docs accepts a corpus of documents as input
+     * @param term takes a term as input
+     * @return returns a list of document ids, sorted by the frequency of occurrence of the term in the document
      */
     public static List<String> getDocsIdsForTerm(List<Map<String, String>> docs, Pattern term) {
         List<String> result = new ArrayList<>();
@@ -70,8 +71,8 @@ public class TermUtils {
     }
 
     /**
-     * @param term принимает на вход терм
-     * @return возвращает исходную строку без спецсимволов конца слова
+     * @param term takes a term as input
+     * @return returns the original string without the end-of-word characters
      */
     public static String getStringFromTerm(Pattern term) {
         String result = term.toString();
@@ -79,9 +80,9 @@ public class TermUtils {
     }
 
     /**
-     * @param text принимает на вход строку (предложение)
-     * @return разбивает строку на термы и обратно в строки, возвращает список строк
-     * с целью, добавлять в обратный индекс только чистые слова без прилипших знаков препинания и прочего
+     * @param text takes a string (sentence) as input
+     * @return splits a string into terms and back into strings, returning a list of strings
+     * with the goal of adding only pure words to the reverse index without stuck punctuation marks and other things
      */
     public static List<String> parseTextToWords(String text) {
         List<String> result = new ArrayList<>();

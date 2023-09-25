@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class SearchEngineTest {
 
     @Test
@@ -24,7 +26,7 @@ class SearchEngineTest {
         expected.add("doc3");
         expected.add("doc2");
         expected.add("doc1");
-//        assertEquals(expected, result);
+        assertEquals(expected, result);
         System.out.println(result);
     }
 }

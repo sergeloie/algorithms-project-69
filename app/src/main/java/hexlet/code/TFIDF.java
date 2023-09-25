@@ -45,12 +45,8 @@ public class TFIDF {
         Comparator<Map<String, Double>> byDoubleCount;
         byDoubleCount = Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue());
         var someList =  result.stream()
-//                .sorted(Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue()))
                 .sorted(byDoubleCount.reversed())
                 .collect(Collectors.toList());
-
-//        someList.sort(Comparator.comparing(m -> m.values().stream().findFirst().orElse(0.0),
-//                Comparator.reverseOrder()));
         return someList;
 
 

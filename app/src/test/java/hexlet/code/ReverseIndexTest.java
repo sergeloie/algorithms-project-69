@@ -12,7 +12,7 @@ class ReverseIndexTest {
 
     @Test
     void testCreateReverseIndex() {
-        var doc1 = "milk test shake штако";
+        var doc1 = "milk test shake noops";
         var doc2 = "test shake big";
         var doc3 = "big test complete";
 
@@ -23,8 +23,8 @@ class ReverseIndexTest {
         );
 
         String actual = createReverseIndex(docs).toString();
-        String expected = "{big=[doc2, doc3], shake=[doc1, doc2], test=[doc1, doc2, doc3], "
-                + "milk=[doc1], complete=[doc3], штако=[doc1]}";
+        String expected = "{big=[doc2, doc3], shake=[doc1, doc2], noops=[doc1], "
+                + "test=[doc1, doc2, doc3], milk=[doc1], complete=[doc3]}";
 
         System.out.println(actual);
         assertEquals(actual, expected);
