@@ -14,7 +14,7 @@ import static hexlet.code.TFIDF.getTFIDFList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TFIDFTest {
-    private String doc1 = "milk test shake штако";
+    private String doc1 = "milk test shake borg";
     private String doc2 = "test shake big";
     private String doc3 = "big test complete elephant mortal";
     private String doc4 = "point pit";
