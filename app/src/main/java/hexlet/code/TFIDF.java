@@ -2,7 +2,6 @@ package hexlet.code;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,12 +37,33 @@ public class TFIDF {
         List<Map<String, Double>> result = new ArrayList<>();
         for (Map<String, String> doc : docs) {
             double x = calculateTFIDF(docs, doc.get("text"), word);
-            result.add((Map<String, Double>) new HashMap<>().put(word, x));
+            System.out.println(x);
+            result.add(Map.of(doc.get("id"), x));
+
         }
-        return result.stream()
-                .sorted(Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue()))
+
+        Comparator<Map<String, Double>> byDoubleCount;
+        byDoubleCount = Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue());
+        var someList =  result.stream()
+//                .sorted(Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue()))
+                .sorted(byDoubleCount.reversed())
                 .collect(Collectors.toList());
+
+//        someList.sort(Comparator.comparing(m -> m.values().stream().findFirst().orElse(0.0),
+//                Comparator.reverseOrder()));
+        return someList;
+
+
     }
+
+    public static List<String> getSimpleTFIDFList(List<Map<String, Double>> tfidfList) {
+        List<String> result = new ArrayList<>();
+        result = tfidfList.stream()
+                .map(m -> m.entrySet().iterator().next().getKey())
+                .toList();
+        return result;
+    }
+
 
 
 }
