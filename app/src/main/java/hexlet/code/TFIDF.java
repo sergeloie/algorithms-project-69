@@ -4,16 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import static hexlet.code.ReverseIndex.createReverseIndex;
-import static hexlet.code.TermUtils.*;
 
 public class TFIDF {
 
     public static int calculateNumberOfWords(String doc) {
-        return splitStringIntoTerms(doc).size();
+        return TermUtils.splitStringIntoTerms(doc).size();
     }
 
     public static double calculateTF(String doc, String word) {
-        double numTF = countOccurrences(doc, getTermFromToken(word));
+        double numTF = TermUtils.countOccurrences(doc, TermUtils.getTermFromToken(word));
         double denTF = calculateNumberOfWords(doc);
         return numTF / denTF;
     }
