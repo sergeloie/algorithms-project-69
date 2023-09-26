@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.TFIDF.calculateIDF;
+import static hexlet.code.TFIDF.calculateWordIDF;
 import static hexlet.code.TFIDF.calculateNumberOfWords;
-import static hexlet.code.TFIDF.calculateTF;
-import static hexlet.code.TFIDF.calculateTFIDF;
+import static hexlet.code.TFIDF.calculateWordTF;
+import static hexlet.code.TFIDF.calculateWordTFIDF;
 import static hexlet.code.TFIDF.getSimpleTFIDFList;
-import static hexlet.code.TFIDF.getTFIDFList;
+import static hexlet.code.TFIDF.getWordTFIDFList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TFIDFTest {
@@ -35,7 +35,7 @@ class TFIDFTest {
     @Test
     void testCalculateTFIDF() {
 
-        System.out.println(calculateTFIDF(docs, doc1, word1));
+        System.out.println(calculateWordTFIDF(docs, doc1, word1));
     }
 
     @Test
@@ -48,55 +48,55 @@ class TFIDFTest {
 
     @Test
     void tESTcalculateTF() {
-        assertEquals(0.25, calculateTF(doc1, word1), 0.001);
-        assertEquals(0.3333333, calculateTF(doc2, word1), 0.001);
-        assertEquals(0.2, calculateTF(doc3, word1), 0.001);
-        assertEquals(0.0, calculateTF(doc4, word1), 0.001);
+        assertEquals(0.25, calculateWordTF(doc1, word1), 0.001);
+        assertEquals(0.3333333, calculateWordTF(doc2, word1), 0.001);
+        assertEquals(0.2, calculateWordTF(doc3, word1), 0.001);
+        assertEquals(0.0, calculateWordTF(doc4, word1), 0.001);
 
-        assertEquals(0.3333333, calculateTF(doc2, word2), 0.001);
-        assertEquals(0.2, calculateTF(doc3, word3), 0.001);
-        assertEquals(0.5, calculateTF(doc4, word4), 0.001);
+        assertEquals(0.3333333, calculateWordTF(doc2, word2), 0.001);
+        assertEquals(0.2, calculateWordTF(doc3, word3), 0.001);
+        assertEquals(0.5, calculateWordTF(doc4, word4), 0.001);
     }
 
     @Test
     void tESTcalculateIDF() {
-        assertEquals(0.125, calculateIDF(docs, word1), 0.001);
-        assertEquals(0.301, calculateIDF(docs, word2), 0.001);
-        assertEquals(0.602, calculateIDF(docs, word3), 0.001);
-        assertEquals(0.602, calculateIDF(docs, word4), 0.001);
+        assertEquals(0.125, calculateWordIDF(docs, word1), 0.001);
+        assertEquals(0.301, calculateWordIDF(docs, word2), 0.001);
+        assertEquals(0.602, calculateWordIDF(docs, word3), 0.001);
+        assertEquals(0.602, calculateWordIDF(docs, word4), 0.001);
     }
 
     @Test
     void tESTcalculateTFIDF() {
-        assertEquals(0.031, calculateTFIDF(docs, doc1, word1), 0.001);
-        assertEquals(0.1, calculateTFIDF(docs, doc2, word2), 0.001);
-        assertEquals(0.12, calculateTFIDF(docs, doc3, word3), 0.001);
-        assertEquals(0.301, calculateTFIDF(docs, doc4, word4), 0.001);
+        assertEquals(0.031, calculateWordTFIDF(docs, doc1, word1), 0.001);
+        assertEquals(0.1, calculateWordTFIDF(docs, doc2, word2), 0.001);
+        assertEquals(0.12, calculateWordTFIDF(docs, doc3, word3), 0.001);
+        assertEquals(0.301, calculateWordTFIDF(docs, doc4, word4), 0.001);
     }
 
     @Test
     void tESTgetTFIDFList() {
         // Calculate TF-IDF for "test"
-        List<Map<String, Double>> tfidfListTest1 = getTFIDFList(docs, word1);
+        List<Map<String, Double>> tfidfListTest1 = getWordTFIDFList(docs, word1);
         System.out.println(tfidfListTest1);
         List<String> resultListTest1 = getSimpleTFIDFList(tfidfListTest1);
         System.out.println(resultListTest1);
         assertEquals(List.of("doc2", "doc1", "doc3", "doc4"), resultListTest1);
 
-        List<Map<String, Double>> tfidfListTest2 = getTFIDFList(docs, word2);
+        List<Map<String, Double>> tfidfListTest2 = getWordTFIDFList(docs, word2);
         List<String> resultListTest2 = getSimpleTFIDFList(tfidfListTest2);
         System.out.println(tfidfListTest2);
         System.out.println(resultListTest2);
         assertEquals(List.of("doc2", "doc1", "doc3", "doc4"), resultListTest2);
 
-        List<Map<String, Double>> tfidfListTest3 = getTFIDFList(docs, word3);
+        List<Map<String, Double>> tfidfListTest3 = getWordTFIDFList(docs, word3);
         List<String> resultListTest3 = getSimpleTFIDFList(tfidfListTest3);
         System.out.println(tfidfListTest3);
         System.out.println(resultListTest3);
         assertEquals(List.of("doc3", "doc1", "doc2", "doc4"), resultListTest3);
 
 
-        List<Map<String, Double>> tfidfListTest4 = getTFIDFList(docs, word4);
+        List<Map<String, Double>> tfidfListTest4 = getWordTFIDFList(docs, word4);
         List<String> resultListTest4 = getSimpleTFIDFList(tfidfListTest4);
         System.out.println(tfidfListTest4);
         System.out.println(resultListTest4);

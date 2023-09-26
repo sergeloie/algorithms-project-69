@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import static hexlet.code.TFIDF.getSimpleTFIDFList;
-import static hexlet.code.TFIDF.getTFIDFList;
 import static hexlet.code.Utils.collapseListOfDifferentStringsIntoSortedListOfUniqueStrings;
 
 public class SearchEngine {
@@ -32,9 +30,12 @@ public class SearchEngine {
         return result;
     }
 
-    public static List<String> searchtfidf(List<Map<String, String>> docs, String str) {
-        var result1 = getTFIDFList(docs, str);
-        var result2 = getSimpleTFIDFList(result1);
+    public static List<String> searchtfidf(List<Map<String, String>> docs, String sentence) {
+
+        var result1 = TFIDF.getSentenceTFIDFList(docs, sentence);
+        var result2 = TFIDF.getSimpleTFIDFList(result1);
+//        var result1 = getWordTFIDFList(docs, sentence);
+//        var result2 = getSimpleTFIDFList(result1);
         return result2;
     }
 }
