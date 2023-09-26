@@ -17,6 +17,9 @@ public class SearchEngine {
       * sorted by the number of occurrences of words in documents
      */
     public static List<String> search(List<Map<String, String>> docs, String str) {
+        System.out.println("beginning docs corpus\n" + docs);
+        System.out.println("beginning search string\n" + str);
+
         List<Pattern> termsList = TermUtils.splitStringIntoTerms(str);
         List<String> occurrenceCounter = new ArrayList<>();
 
@@ -24,7 +27,9 @@ public class SearchEngine {
             occurrenceCounter.addAll(TermUtils.getDocsIdsForTerm(docs, term));
         }
 
-        return collapseListOfDifferentStringsIntoSortedListOfUniqueStrings(occurrenceCounter);
+        var result = collapseListOfDifferentStringsIntoSortedListOfUniqueStrings(occurrenceCounter);
+        System.out.println(result);
+        return result;
     }
 
     public static List<String> searchtfidf(List<Map<String, String>> docs, String str) {
