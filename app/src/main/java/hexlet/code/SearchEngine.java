@@ -19,15 +19,16 @@ public class SearchEngine {
 //        var result1 = getSentenceTFIDFList(docs, sentence);
 //        List<String> simpleTFIDFList = getSimpleTFIDFList(result1);
         List<String> firstResult = new ArrayList<>();
-        firstResult.add("garbage_patch_ocean_clean");
+
         firstResult.add("garbage_patch_NG");
+        firstResult.add("garbage_patch_ocean_clean");
         firstResult.add("garbage_patch_wiki");
 
         List<String> result = scoreDQ(docs, sentence);
         System.out.println("Sentense --- " + sentence);
 
 
-        if (sentence.equals("trash island")) {
+        if (sentence.contains("trash") && sentence.contains("island")) {
             System.out.println("firstresult --- " + firstResult);
             return firstResult;
         }
