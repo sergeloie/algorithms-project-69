@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class TermUtils {
     /**
      * @param word accepts a string as input
-     * @return extracts only letters from the string, adds a word terminator at the beginning and end,
+     * @return only letters from the string, adds a word terminator at the beginning and end,
      * and returns the term
      */
     public static Pattern getTermFromToken(String word) {
@@ -38,12 +38,12 @@ public class TermUtils {
     }
 
     /**
-     * @param sentence receives a string (sentence) as input
+     * @param text receives a string (text) as input
      * @param term receives a term as input
-     * @return counts the number of occurrences of a term in a sentence
+     * @return counts the number of occurrences of a term in a text
      */
-    public static int countOccurrences(String sentence, Pattern term) {
-        Matcher matcher = term.matcher(sentence);
+    public static int countOccurrences(String text, Pattern term) {
+        Matcher matcher = term.matcher(text);
         int count = 0;
 
         while (matcher.find()) {
@@ -55,7 +55,7 @@ public class TermUtils {
     /**
      * @param docs accepts a corpus of documents as input
      * @param term takes a term as input
-     * @return returns a list of document ids, sorted by the frequency of occurrence of the term in the document
+     * @return a list of document ids, sorted by the frequency of occurrence of the term in the document
      */
     public static List<String> getDocsIdsForTerm(List<Map<String, String>> docs, Pattern term) {
         List<String> result = new ArrayList<>();
@@ -72,7 +72,7 @@ public class TermUtils {
 
     /**
      * @param term takes a term as input
-     * @return returns the original string without the end-of-word characters
+     * @return the original string without the end-of-word characters
      */
     public static String getStringFromTerm(Pattern term) {
         String result = term.toString();
