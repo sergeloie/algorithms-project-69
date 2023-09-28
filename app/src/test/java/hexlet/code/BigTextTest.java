@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
+import static hexlet.code.ProbeTFIDF.calculateTFIDF;
 import static hexlet.code.ReverseIndex.createReverseIndex;
 import static hexlet.code.TFIDF.calculateDocLength;
 import static hexlet.code.TFIDF.calculateSentenceTFIDF;
@@ -115,6 +116,7 @@ public class BigTextTest {
 //        //System.out.println(calculateWordIDF(docs1, "qwertyui"));
 //        System.out.println(splitStringIntoTerms("trash island"));
         System.out.println(scoreDQ(docs, "trash"));
+        System.out.println(calculateTFIDF(docs1, "trash island"));
 
     }
 
