@@ -24,7 +24,7 @@ public class SearchEngine {
         firstResult.add("garbage_patch_wiki");
 
         List<String> result = scoreDQ(docs, sentence);
-        System.out.println("Sentense --- "+ sentence);
+        System.out.println("Sentense --- " + sentence);
 
 
         if (sentence.equals("trash island")) {
