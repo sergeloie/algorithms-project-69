@@ -15,6 +15,7 @@ import static hexlet.code.TFIDF.calculateWordIDF;
 import static hexlet.code.TFIDF.calculateWordTF;
 import static hexlet.code.TFIDF.calculateWordTFIDF;
 import static hexlet.code.TFIDF.scoreDQ;
+import static hexlet.code.TermUtils.splitStringIntoTerms;
 
 public class BigTextTest {
 
@@ -116,6 +117,7 @@ public class BigTextTest {
 //        System.out.println(scoreDQ(docs1, garbagePatchSpam, masscount));
 
         //System.out.println(calculateWordIDF(docs1, "qwertyui"));
+        System.out.println(splitStringIntoTerms("trash island"));
 
     }
 

@@ -25,7 +25,7 @@ public class TermUtils {
      * @return splits the input string into words by spaces and returns a list of terms (for each word)
      */
     public static List<String> splitStringIntoTerms(String sentence) {
-        String[] tokens = sentence.split("\\W+");
+        String[] tokens = sentence.split(" ");
         List<String> result = new ArrayList<>();
         for (String token : tokens) {
             result.add(getTermFromToken(token));
