@@ -115,7 +115,7 @@ public class BigTextTest {
         System.out.println(scoreDQ(docs1, garbagePatchWiki, masscount));
 //        System.out.println(scoreDQ(docs1, garbagePatchSpam, masscount));
 
-        System.out.println(calculateWordIDF(docs1, "qwertyui"));
+        //System.out.println(calculateWordIDF(docs1, "qwertyui"));
 
     }
 
