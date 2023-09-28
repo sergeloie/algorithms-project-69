@@ -25,7 +25,7 @@ public class TermUtils {
      * @return splits the input string into words by spaces and returns a list of terms (for each word)
      */
     public static List<String> splitStringIntoTerms(String sentence) {
-        String[] tokens = sentence.split(" ");
+        String[] tokens = sentence.split("\\W+");
         List<String> result = new ArrayList<>();
         for (String token : tokens) {
             result.add(getTermFromToken(token));
@@ -35,11 +35,12 @@ public class TermUtils {
 
     /**
      * @param text receives a string (text) as input
-     * @param term receives a term as input
+     * @param token receives a token as input
      * @return counts the number of occurrences of a term in a text
      */
-    public static int countOccurrences(String text, String term) {
+    public static int countOccurrences(String text, String token) {
         List<String> words = splitStringIntoTerms(text);
+        String term = getTermFromToken(token);
         int count = 0;
         for (String word : words) {
             if (word.equals(term)) {

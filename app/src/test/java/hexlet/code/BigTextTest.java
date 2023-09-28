@@ -9,10 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import static hexlet.code.ReverseIndex.createReverseIndex;
+import static hexlet.code.TFIDF.calculateDocLength;
 import static hexlet.code.TFIDF.calculateSentenceTFIDF;
 import static hexlet.code.TFIDF.calculateWordIDF;
 import static hexlet.code.TFIDF.calculateWordTF;
 import static hexlet.code.TFIDF.calculateWordTFIDF;
+import static hexlet.code.TFIDF.scoreDQ;
 
 public class BigTextTest {
 
@@ -64,17 +66,17 @@ public class BigTextTest {
 
         System.out.println(calculateWordTFIDF(docs1, garbagePatchNG, "trash"));
         System.out.println(calculateWordTFIDF(docs1, garbagePatchNG, "island"));
-        System.out.format("%.06f", calculateSentenceTFIDF(docs1, garbagePatchNG, "trash island"));
+        System.out.format("%.06f", calculateSentenceTFIDF(docs1, garbagePatchNG, "trash island islands"));
 
 
         System.out.println(calculateWordTFIDF(docs1, garbagePatchOceanClean, "trash"));
         System.out.println(calculateWordTFIDF(docs1, garbagePatchOceanClean, "island"));
-        System.out.format("%.6f", calculateSentenceTFIDF(docs1, garbagePatchOceanClean, "trash island"));
+        System.out.format("%.6f", calculateSentenceTFIDF(docs1, garbagePatchOceanClean, "trash island islands"));
 
 
         System.out.println(calculateWordTFIDF(docs1, garbagePatchWiki, "trash"));
         System.out.println(calculateWordTFIDF(docs1, garbagePatchWiki, "island"));
-        System.out.println(calculateSentenceTFIDF(docs1, garbagePatchWiki, "trash island"));
+        System.out.println(calculateSentenceTFIDF(docs1, garbagePatchWiki, "trash island islands"));
 
     }
 
@@ -82,6 +84,37 @@ public class BigTextTest {
     void testReverseIndex() {
         var reverseIndex = createReverseIndex(docs);
         System.out.println(reverseIndex);
+//        System.out.println(countOccurrences(garbagePatchNG, "trash"));
+        System.out.println(calculateDocLength(garbagePatchNG));
+    }
+
+    @Test
+    void testTFIDF() {
+        String mass = "mass";
+        String count = "count";
+        String masscount = "trash island";
+//        System.out.println(calculateWordTF(garbagePatchNG, mass));
+//        System.out.println(calculateWordTF(garbagePatchOceanClean, mass));
+//        System.out.println(calculateWordTF(garbagePatchWiki, mass));
+//        System.out.println(calculateWordTF(garbagePatchSpam, mass));
+//
+//
+//
+//        System.out.println(calculateWordTFIDF(docs, garbagePatchNG, mass));
+//        System.out.println(calculateWordTFIDF(docs, garbagePatchOceanClean, mass));
+//        System.out.println(calculateWordTFIDF(docs, garbagePatchWiki, mass));
+//        System.out.println(calculateWordTFIDF(docs, garbagePatchSpam, mass));
+//
+//        System.out.println(calculateWordIDF(docs, mass));
+//        System.out.println(calculateWordIDF(docs, count));
+//
+//        System.out.println(calculateAvarageDocLength(docs));
+
+        System.out.println(scoreDQ(docs1, garbagePatchNG, masscount));
+        System.out.println(scoreDQ(docs1, garbagePatchOceanClean, masscount));
+        System.out.println(scoreDQ(docs1, garbagePatchWiki, masscount));
+//        System.out.println(scoreDQ(docs1, garbagePatchSpam, masscount));
+
     }
 
 

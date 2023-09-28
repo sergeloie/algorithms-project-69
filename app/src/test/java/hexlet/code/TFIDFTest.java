@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import static hexlet.code.TFIDF.calculateWordIDF;
-import static hexlet.code.TFIDF.calculateNumberOfWords;
+import static hexlet.code.TFIDF.calculateDocLength;
 import static hexlet.code.TFIDF.calculateWordTF;
 import static hexlet.code.TFIDF.calculateWordTFIDF;
 import static hexlet.code.TFIDF.getSimpleTFIDFList;
@@ -40,10 +40,10 @@ class TFIDFTest {
 
     @Test
     void tESTcalculateNumberOfWords() {
-        assertEquals(4, calculateNumberOfWords(doc1));
-        assertEquals(3, calculateNumberOfWords(doc2));
-        assertEquals(5, calculateNumberOfWords(doc3));
-        assertEquals(2, calculateNumberOfWords(doc4));
+        assertEquals(4, calculateDocLength(doc1));
+        assertEquals(3, calculateDocLength(doc2));
+        assertEquals(5, calculateDocLength(doc3));
+        assertEquals(2, calculateDocLength(doc4));
     }
 
     @Test

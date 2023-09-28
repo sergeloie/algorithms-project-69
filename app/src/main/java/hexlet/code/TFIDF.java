@@ -11,13 +11,13 @@ import static hexlet.code.TermUtils.splitStringIntoTerms;
 
 public class TFIDF {
 
-    public static int calculateNumberOfWords(String doc) {
+    public static int calculateDocLength(String doc) {
         return splitStringIntoTerms(doc).size();
     }
 
     public static double calculateWordTF(String doc, String word) {
         double numTF = TermUtils.countOccurrences(doc, TermUtils.getTermFromToken(word));
-        double denTF = calculateNumberOfWords(doc);
+        double denTF = calculateDocLength(doc);
         return numTF / denTF;
     }
 
@@ -46,7 +46,7 @@ public class TFIDF {
     public static List<Map<String, Double>> getSentenceTFIDFList(List<Map<String, String>> docs, String sentence) {
         List<Map<String, Double>> result = new ArrayList<>();
         for (Map<String, String> doc : docs) {
-            double x = calculateSentenceTFIDF(docs, doc.get("text"), sentence);
+            double x = scoreDQ(docs, doc.get("text"), sentence);
             System.out.printf("%s - %01.20f%n", doc.get("id"), x);
             result.add(Map.of(doc.get("id"), x));
         }
@@ -77,6 +77,32 @@ public class TFIDF {
                 .map(m -> m.entrySet().iterator().next().getKey())
                 .toList();
 
+    }
+
+    public static double scoreDQ(List<Map<String, String>> docs, String doc, String sentence) {
+        double k = 2;
+        double b = 0.75;
+        double score = 0;
+        List<String> words = splitStringIntoTerms(sentence);
+        for (String word : words) {
+            //          System.out.println(word);
+            double tf = calculateWordTF(doc, word);
+            double idf = calculateWordIDF(docs, word);
+            score += idf
+                    * (tf * (k + 1))
+                    * (tf + k * (1 - b + b * calculateDocLength(doc) / calculateAvarageDocLength(docs)));
+
+        }
+        return score;
+    }
+
+    public static long calculateAvarageDocLength(List<Map<String, String>> docs) {
+        // calculate average length of documents
+        long totalLength = 0;
+        for (Map<String, String> doc : docs) {
+            totalLength += splitStringIntoTerms(doc.get("text")).size();
+        }
+        return totalLength / docs.size();
     }
 
 
