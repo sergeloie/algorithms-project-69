@@ -9,8 +9,6 @@ import static hexlet.code.TFIDF.calculateWordIDF;
 import static hexlet.code.TFIDF.calculateDocLength;
 import static hexlet.code.TFIDF.calculateWordTF;
 import static hexlet.code.TFIDF.calculateWordTFIDF;
-import static hexlet.code.TFIDF.getSimpleTFIDFList;
-import static hexlet.code.TFIDF.getWordTFIDFList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TFIDFTest {
@@ -72,35 +70,6 @@ class TFIDFTest {
         assertEquals(0.1, calculateWordTFIDF(docs, doc2, word2), 0.001);
         assertEquals(0.12, calculateWordTFIDF(docs, doc3, word3), 0.001);
         assertEquals(0.301, calculateWordTFIDF(docs, doc4, word4), 0.001);
-    }
-
-    @Test
-    void tESTgetTFIDFList() {
-        // Calculate TF-IDF for "test"
-        List<Map<String, Double>> tfidfListTest1 = getWordTFIDFList(docs, word1);
-        System.out.println(tfidfListTest1);
-        List<String> resultListTest1 = getSimpleTFIDFList(tfidfListTest1);
-        System.out.println(resultListTest1);
-        assertEquals(List.of("doc2", "doc1", "doc3", "doc4"), resultListTest1);
-
-        List<Map<String, Double>> tfidfListTest2 = getWordTFIDFList(docs, word2);
-        List<String> resultListTest2 = getSimpleTFIDFList(tfidfListTest2);
-        System.out.println(tfidfListTest2);
-        System.out.println(resultListTest2);
-        assertEquals(List.of("doc2", "doc1", "doc3", "doc4"), resultListTest2);
-
-        List<Map<String, Double>> tfidfListTest3 = getWordTFIDFList(docs, word3);
-        List<String> resultListTest3 = getSimpleTFIDFList(tfidfListTest3);
-        System.out.println(tfidfListTest3);
-        System.out.println(resultListTest3);
-        assertEquals(List.of("doc3", "doc1", "doc2", "doc4"), resultListTest3);
-
-
-        List<Map<String, Double>> tfidfListTest4 = getWordTFIDFList(docs, word4);
-        List<String> resultListTest4 = getSimpleTFIDFList(tfidfListTest4);
-        System.out.println(tfidfListTest4);
-        System.out.println(resultListTest4);
-        assertEquals(List.of("doc4", "doc1", "doc2", "doc3"), resultListTest4);
     }
 
     @Test

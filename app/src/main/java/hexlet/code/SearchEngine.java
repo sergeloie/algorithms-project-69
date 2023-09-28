@@ -3,9 +3,7 @@ package hexlet.code;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.ReverseIndex.createReverseIndex;
-import static hexlet.code.TFIDF.getSentenceTFIDFList;
-import static hexlet.code.TFIDF.getSimpleTFIDFList;
+import static hexlet.code.ScoreDQ.scoreDQ;
 
 
 public class SearchEngine {
@@ -16,14 +14,12 @@ public class SearchEngine {
      * @return returns a list of documents where any of the words occur sorted by TF-IDF score
      */
     public static List<String> search(List<Map<String, String>> docs, String sentence) {
-
-//        System.out.println("beginning docs corpus\n" + docs);
-//        System.out.println("beginning search string\n" + sentence);
-        final Map<String, List<String>> reverseIndex = createReverseIndex(docs);
-        var result1 = getSentenceTFIDFList(docs, sentence);
-        List<String> simpleTFIDFList = getSimpleTFIDFList(result1);
-//        System.out.println("SentenceTFIDFList = " + result1 + "\n");
-//        System.out.println("simpleTFIDFList = " + simpleTFIDFList + "\n");
-        return simpleTFIDFList;
+//        final Map<String, List<String>> reverseIndex = createReverseIndex(docs);
+//        var result1 = getSentenceTFIDFList(docs, sentence);
+//        List<String> simpleTFIDFList = getSimpleTFIDFList(result1);
+        List<String> result = scoreDQ(docs, sentence);
+        System.out.println(sentence);
+        System.out.println(result);
+        return result;
     }
 }

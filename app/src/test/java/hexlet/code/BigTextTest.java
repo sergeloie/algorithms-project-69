@@ -14,8 +14,7 @@ import static hexlet.code.TFIDF.calculateSentenceTFIDF;
 import static hexlet.code.TFIDF.calculateWordIDF;
 import static hexlet.code.TFIDF.calculateWordTF;
 import static hexlet.code.TFIDF.calculateWordTFIDF;
-import static hexlet.code.TFIDF.scoreDQ;
-import static hexlet.code.TermUtils.splitStringIntoTerms;
+import static hexlet.code.ScoreDQ.scoreDQ;
 
 public class BigTextTest {
 
@@ -105,19 +104,17 @@ public class BigTextTest {
 //        System.out.println(calculateWordTFIDF(docs, garbagePatchOceanClean, mass));
 //        System.out.println(calculateWordTFIDF(docs, garbagePatchWiki, mass));
 //        System.out.println(calculateWordTFIDF(docs, garbagePatchSpam, mass));
+////
+////        System.out.println(calculateWordIDF(docs, mass));
+////        System.out.println(calculateWordIDF(docs, count));
+////
+////        System.out.println(calculateAvarageDocLength(docs));
 //
-//        System.out.println(calculateWordIDF(docs, mass));
-//        System.out.println(calculateWordIDF(docs, count));
+
 //
-//        System.out.println(calculateAvarageDocLength(docs));
-
-        System.out.println(scoreDQ(docs1, garbagePatchNG, masscount));
-        System.out.println(scoreDQ(docs1, garbagePatchOceanClean, masscount));
-        System.out.println(scoreDQ(docs1, garbagePatchWiki, masscount));
-//        System.out.println(scoreDQ(docs1, garbagePatchSpam, masscount));
-
-        //System.out.println(calculateWordIDF(docs1, "qwertyui"));
-        System.out.println(splitStringIntoTerms("trash island"));
+//        //System.out.println(calculateWordIDF(docs1, "qwertyui"));
+//        System.out.println(splitStringIntoTerms("trash island"));
+        System.out.println(scoreDQ(docs, "trash"));
 
     }
 
