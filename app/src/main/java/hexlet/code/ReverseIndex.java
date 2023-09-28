@@ -13,7 +13,7 @@ public class ReverseIndex {
      * @param index takes as input the Reverse Index
      * @param word takes a word as input
      * @param docId takes the document identifier as input
-     * @append adds a word and a list of documents where it occurs to the Reverse Index
+     * adds a word and a list of documents where it occurs to the Reverse Index
      */
     public static void appendReverseIndex(Map<String, List<String>> index, String word, String docId) {
         if (!index.containsKey(word)) {
