@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import static hexlet.code.ReverseIndex.createReverseIndex;
-import static hexlet.code.TFIDF.*;
+import static hexlet.code.TFIDF.calculateSentenceTFIDF;
+import static hexlet.code.TFIDF.calculateWordIDF;
+import static hexlet.code.TFIDF.calculateWordTF;
+import static hexlet.code.TFIDF.calculateWordTFIDF;
 
 public class BigTextTest {
 

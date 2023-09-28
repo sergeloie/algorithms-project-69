@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.TermUtils.parseTextToWords;
+import static hexlet.code.TermUtils.splitStringIntoTerms;
 
 public class ReverseIndex {
     /**
@@ -35,7 +35,7 @@ public class ReverseIndex {
         for (Map<String, String> doc : docs) {
             String docId = doc.get("id");
             String text = doc.get("text");
-            List<String> words = parseTextToWords(text);
+            List<String> words = splitStringIntoTerms(text);
             for (String word : words) {
                 appendReverseIndex(result, word, docId);
             }

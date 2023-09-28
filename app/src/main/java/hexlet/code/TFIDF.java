@@ -7,12 +7,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static hexlet.code.ReverseIndex.createReverseIndex;
-import static hexlet.code.TermUtils.parseTextToWords;
+import static hexlet.code.TermUtils.splitStringIntoTerms;
 
 public class TFIDF {
 
     public static int calculateNumberOfWords(String doc) {
-        return TermUtils.splitStringIntoTerms(doc).size();
+        return splitStringIntoTerms(doc).size();
     }
 
     public static double calculateWordTF(String doc, String word) {
@@ -35,7 +35,7 @@ public class TFIDF {
     }
 
     public static double calculateSentenceTFIDF(List<Map<String, String>> docs, String doc, String sentence) {
-        List<String> words = parseTextToWords(sentence);
+        List<String> words = splitStringIntoTerms(sentence);
         double tfidf = 0;
         for (String word : words) {
             tfidf += calculateWordTFIDF(docs, doc, word);
@@ -52,10 +52,9 @@ public class TFIDF {
         }
         Comparator<Map<String, Double>> byDoubleCount;
         byDoubleCount = Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue());
-        var someList =  result.stream()
+        return result.stream()
                 .sorted(byDoubleCount.reversed())
                 .collect(Collectors.toList());
-        return someList;
     }
 
     public static List<Map<String, Double>> getWordTFIDFList(List<Map<String, String>> docs, String word) {
@@ -67,10 +66,9 @@ public class TFIDF {
         }
         Comparator<Map<String, Double>> byDoubleCount;
         byDoubleCount = Comparator.comparingDouble(m -> m.entrySet().iterator().next().getValue());
-        var someList =  result.stream()
+        return result.stream()
                 .sorted(byDoubleCount.reversed())
                 .collect(Collectors.toList());
-        return someList;
     }
 
     public static List<String> getSimpleTFIDFList(List<Map<String, Double>> tfidfList) {
