@@ -39,7 +39,12 @@ public class SearchEngine {
      */
     public static List<String> search(List<Map<String, String>> docs, String sentence) {
 
+        System.out.println("beginning docs corpus\n" + docs);
+        System.out.println("beginning search string\n" + sentence);
         var result1 = getSentenceTFIDFList(docs, sentence);
-        return getSimpleTFIDFList(result1);
+        List<String> simpleTFIDFList = getSimpleTFIDFList(result1);
+        System.out.println("SentenceTFIDFList = " + result1 + "\n");
+        System.out.println("simpleTFIDFList = " + simpleTFIDFList + "\n");
+        return simpleTFIDFList;
     }
 }
