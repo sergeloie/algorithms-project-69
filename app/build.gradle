@@ -50,4 +50,8 @@ jacocoTestReport {
     }
 }
 
+tasks.register('checkstyleAll', Checkstyle) {
+    dependsOn(checkstyleMain, checkstyleTest)
+}
+
 

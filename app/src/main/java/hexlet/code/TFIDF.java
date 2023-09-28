@@ -84,6 +84,7 @@ public class TFIDF {
         double b = 0.75;
         double score = 0;
         List<String> words = splitStringIntoTerms(sentence);
+        System.out.println(words);
         for (String word : words) {
             //          System.out.println(word);
             double tf = calculateWordTF(doc, word);
