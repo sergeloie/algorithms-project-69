@@ -3,6 +3,10 @@ package hexlet.code;
 import java.util.List;
 import java.util.Map;
 
+import static hexlet.code.ReverseIndex.doReverseIndex;
+import static hexlet.code.ScoreDQ.scoreDQ;
+import static hexlet.code.TFIDF2.getSortedDocList;
+
 
 public class SearchEngine {
 
@@ -12,29 +16,11 @@ public class SearchEngine {
      * @return returns a list of documents where any of the words occur sorted by TF-IDF score
      */
     public static List<String> search(List<Map<String, String>> docs, String sentence) {
-//        final Map<String, List<String>> reverseIndex = createReverseIndex(docs);
-//        var result1 = getSentenceTFIDFList(docs, sentence);
-//        List<String> simpleTFIDFList = getSimpleTFIDFList(result1);
-//        List<String> firstResult = new ArrayList<>();
-//
-//        firstResult.add("garbage_patch_NG");
-//        firstResult.add("garbage_patch_ocean_clean");
-//        firstResult.add("garbage_patch_wiki");
-//
-//        List<String> result = scoreDQ(docs, sentence);
-//        System.out.println("Sentense --- " + sentence);
-//
-//
-//        if (sentence.contains("trash") && sentence.contains("island")) {
-//            System.out.println("firstresult --- " + firstResult);
-//            return firstResult;
-//        }
-//        System.out.println("result --- " + result);
-//        return result;
 
-        Map<String, Long> reversIndex = ReverseIndex.buildReverseIndex(ReverseIndex.createReverseIndex(docs));
-        List<String> result = TFIDF2.getSortedDocList(docs, reversIndex, sentence);
-        return result;
+        Map<String, Long> reversIndex = doReverseIndex(docs);
+        List<String> tfidf = getSortedDocList(docs, reversIndex, sentence);
+        List<String> scoredq = scoreDQ(docs, reversIndex, sentence);
+        return tfidf;
 
     }
 }

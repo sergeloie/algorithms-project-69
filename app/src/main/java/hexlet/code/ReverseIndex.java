@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.TermUtils.splitStringIntoTerms;
+import static hexlet.code.TFIDF2.getSplittedText;
 
 public class ReverseIndex {
     /**
@@ -26,26 +26,18 @@ public class ReverseIndex {
         }
     }
 
-    /**
-     * @param docs accepts a corpus of documents as input
-     * @return builds a reverse index for the document corpus
-     */
-    public static Map<String, List<String>> createReverseIndex(List<Map<String, String>> docs) {
-        Map<String, List<String>> result = new HashMap<>();
+    public static Map<String, Long> doReverseIndex(List<Map<String, String>> docs) {
+        Map<String, List<String>> index = new HashMap<>();
+        Map<String, Long> result = new HashMap<>();
         for (Map<String, String> doc : docs) {
             String docId = doc.get("id");
             String text = doc.get("text");
-            List<String> words = splitStringIntoTerms(text);
+            List<String> words = getSplittedText(text);
             for (String word : words) {
-                appendReverseIndex(result, word, docId);
+                appendReverseIndex(index, word, docId);
             }
         }
-        return result;
-    }
-
-    public static Map<String, Long> buildReverseIndex(Map<String, List<String>> reverseIndex) {
-        Map<String, Long> result = new HashMap<>();
-        for (Map.Entry<String, List<String>> entry : reverseIndex.entrySet()) {
+        for (Map.Entry<String, List<String>> entry : index.entrySet()) {
             String word = entry.getKey();
             long count = entry.getValue().size();
             result.put(word, count);

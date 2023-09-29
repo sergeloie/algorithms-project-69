@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.ReverseIndex.buildReverseIndex;
-import static hexlet.code.ReverseIndex.createReverseIndex;
+import static hexlet.code.ReverseIndex.doReverseIndex;
 import static hexlet.code.TFIDF2.getNumberOfWordsInDocument;
 import static hexlet.code.TFIDF2.getSortedDocList;
 import static hexlet.code.TFIDF2.sortIndex;
@@ -43,7 +42,7 @@ public class TFIDF2Test {
     @Test
     void reverseIndexTest() throws IOException {
 //        System.out.println(buildReverseIndex(createReverseIndex(docs)));
-        var index = buildReverseIndex(createReverseIndex(docs));
+        var index = doReverseIndex(docs);
         System.out.println(getSortedDocList(docs, index, "trash island"));
     }
 

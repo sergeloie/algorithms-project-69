@@ -6,25 +6,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static hexlet.code.TermUtils.splitStringIntoTerms;
+import static hexlet.code.TFIDF2.getIDF;
+import static hexlet.code.TFIDF2.getNumberOfWordsInDocument;
+import static hexlet.code.TFIDF2.getSplittedText;
+import static hexlet.code.TFIDF2.getTF;
 
 public class ScoreDQ {
-    public static List<String> scoreDQ(List<Map<String, String>> docs, String sentence) {
+    public static List<String> scoreDQ(List<Map<String, String>> docs, Map<String, Long> index, String sentence) {
 
         List<Map<String, Double>> result = new ArrayList<>();
         double k = 2;
         double b = 0.75;
-
+//        var index = buildReverseIndex(createReverseIndex(docs));
         long avgDocLength = calculateAvarageDocLength(docs);
-        List<String> words = splitStringIntoTerms(sentence);
+        List<String> words = getSplittedText(sentence);
         for (Map<String, String> doc : docs) {
             String docId = doc.get("id");
             String docText = doc.get("text");
-            int docLength = TFIDF.calculateDocLength(docText);
+            long docLength = getNumberOfWordsInDocument(doc);
             double score = 0;
             for (String word : words) {
-                double tf = TFIDF.calculateWordTF(docText, word);
-                double idf = TFIDF.calculateWordIDF(docs, word);
+                double tf = getTF(doc, word);
+                double idf = getIDF(docs, index, word);
                 score += idf * (tf * (k + 1)) * (tf + k * (1 - b + b * docLength / avgDocLength));
             }
             result.add(Map.of(docId, score));
@@ -43,7 +46,7 @@ public class ScoreDQ {
         // calculate average length of documents
         long totalLength = 0;
         for (Map<String, String> doc : docs) {
-            totalLength += splitStringIntoTerms(doc.get("text")).size();
+            totalLength += getNumberOfWordsInDocument(doc);
         }
         return totalLength / docs.size();
     }
