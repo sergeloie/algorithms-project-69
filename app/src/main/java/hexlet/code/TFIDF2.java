@@ -86,8 +86,8 @@ public class TFIDF2 {
     }
 
     public static List<String> getSplittedText(String text) {
-//        return Arrays.stream(text.toLowerCase().split("\\s+|\\p{Punct}"))
-        return Arrays.stream(text.toLowerCase().split("\\s+"))
+        return Arrays.stream(text.toLowerCase().split("\\s+|\\p{Punct}"))
+//        return Arrays.stream(text.toLowerCase().split("\\s+"))
                 .map(TFIDF2::getTermFromToken)
                 .toList();
     }

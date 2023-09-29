@@ -41,7 +41,7 @@ public class TFIDF2Test {
 
     @Test
     void reverseIndexTest() throws IOException {
-//        System.out.println(buildReverseIndex(createReverseIndex(docs)));
+
         var index = doReverseIndex(docs);
         System.out.println(getSortedDocList(docs, index, "trash island"));
     }
