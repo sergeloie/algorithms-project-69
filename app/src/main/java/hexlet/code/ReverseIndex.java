@@ -42,4 +42,14 @@ public class ReverseIndex {
         }
         return result;
     }
+
+    public static Map<String, Long> buildReverseIndex(Map<String, List<String>> reverseIndex) {
+        Map<String, Long> result = new HashMap<>();
+        for (Map.Entry<String, List<String>> entry : reverseIndex.entrySet()) {
+            String word = entry.getKey();
+            long count = entry.getValue().size();
+            result.put(word, count);
+        }
+        return result;
+    }
 }
