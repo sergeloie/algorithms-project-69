@@ -17,6 +17,8 @@ public class SearchEngine {
      */
     public static List<String> search(List<Map<String, String>> docs, String sentence) {
 
+        System.out.println("!!!SENTENCE!!!");
+        System.out.println(sentence);
         Map<String, Long> reversIndex = doReverseIndex(docs);
         List<String> tfidf = getSortedDocList(docs, reversIndex, sentence);
         List<String> scoredq = scoreDQ(docs, reversIndex, sentence);
