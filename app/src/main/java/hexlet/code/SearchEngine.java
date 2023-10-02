@@ -18,6 +18,5 @@ public class SearchEngine {
 
         Map<String, Long> reversIndex = doReverseIndex(docs);
         return getSortedDocList(docs, reversIndex, sentence);
-
     }
 }
