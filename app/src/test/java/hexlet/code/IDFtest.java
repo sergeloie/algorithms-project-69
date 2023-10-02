@@ -42,7 +42,7 @@ public class IDFtest {
                 Map.of("id", "garbage_patch_ocean_clean", "text", garbagePatchOceanClean),
                 Map.of("id", "garbage_patch_wiki", "text", garbagePatchWiki));
 
-        String sentence = "trash island";
+        String sentence = "";
 
         System.out.println(search(docs1, sentence));
     }
