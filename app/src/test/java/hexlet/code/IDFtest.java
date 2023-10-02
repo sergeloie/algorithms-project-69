@@ -40,9 +40,10 @@ public class IDFtest {
         List<Map<String, String>> docs1 = List.of(
                 Map.of("id", "garbage_patch_NG", "text", garbagePatchNG),
                 Map.of("id", "garbage_patch_ocean_clean", "text", garbagePatchOceanClean),
-                Map.of("id", "garbage_patch_wiki", "text", garbagePatchWiki));
+                Map.of("id", "garbage_patch_wiki", "text", garbagePatchWiki),
+                Map.of("id", "garbagePatchSpam", "text", garbagePatchSpam));
 
-        String sentence = "";
+        String sentence = "shoot at me, nerd";
 
         System.out.println(search(docs1, sentence));
     }

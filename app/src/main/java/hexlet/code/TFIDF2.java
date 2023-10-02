@@ -59,6 +59,12 @@ public class TFIDF2 {
                                 Map<String, Long> index,
                                 String word) {
 
+        double n = docs.size();
+        double df = index.getOrDefault(word, 0L);
+
+
+
+
         //Math.log2(1 + (docsCount - termCount + 1) / (termCount + 0.5));
 
 //        return Math.log((1 + (docs.size() - index.get(word) + 1)) / (index.get(word) + 0.5)) / Math.log(2);
@@ -66,7 +72,7 @@ public class TFIDF2 {
 
         //return (Math.log(1 + (docs.size() - index.get(word) + 1) / (index.get(word) + 0.5))) / Math.log(2);
         //return Math.log((docs.size() + 1) / (index.get(word) + 0.5)) + 1;
-        return Math.log(1 + (docs.size() - index.get(word) + 1) / (index.get(word) + 0.5)); // формула из ответа
+        return Math.log(1 + (n - df + 1) / (df + 0.5)); // формула из ответа
 
 
     }
@@ -94,8 +100,8 @@ public class TFIDF2 {
     }
 
     public static List<String> getSplittedText(String text) {
-//        return Arrays.stream(text.toLowerCase().split("\\s+|\\p{Punct}"))
-        return Arrays.stream(text.toLowerCase().split("\\s+"))
+        return Arrays.stream(text.toLowerCase().split("\\s+|\\p{Punct}"))
+//        return Arrays.stream(text.toLowerCase().split("\\s+"))
                 .map(TFIDF2::getTermFromToken)
                 .toList();
     }
