@@ -22,6 +22,8 @@ public class SearchEngine {
         Map<String, Long> reversIndex = doReverseIndex(docs);
         List<String> tfidf = getSortedDocList(docs, reversIndex, sentence);
         List<String> scoredq = scoreDQ(docs, reversIndex, sentence);
+        System.out.println("!!!TFIDF RESULTS!!!");
+        System.out.println(tfidf);
         return tfidf;
 
     }
