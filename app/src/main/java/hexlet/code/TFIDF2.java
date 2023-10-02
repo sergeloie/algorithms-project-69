@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.apache.commons.math3.util.Precision;
 
 public class TFIDF2 {
 
@@ -16,14 +15,11 @@ public class TFIDF2 {
                                                 Map<String, Long> index,
                                                 String sentence) {
 
-        double epsilon = 0.000001d;
-
-
         List<Map<String, Double>> docScores = new ArrayList<>();
         for (Map<String, String> doc : docs) {
             String docId = doc.get("id");
             double score = getSentenceTFIDF(docs, doc, index, sentence);
-            if ((!Precision.equals(score, 0.0))) {
+            if (!Double.valueOf(score).equals(0.0)) {
                 docScores.add(Map.of(docId, score));
             }
 
