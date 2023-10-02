@@ -59,7 +59,7 @@ public class TFIDF2 {
                                 Map<String, Long> index,
                                 String word) {
 
-        return Math.log(1 + (docs.size() - index.get(word) + 1) / (index.get(word) + 0.5));
+        return Math.log(1 + (docs.size() - index.get(word) + 1) / (index.get(word) + 0.5)) / Math.log(2);
 //        return Math.log((double) 1 + (docs.size() - index.get(word) + 1) / (double) (index.get(word) + 0.5));
 
 
