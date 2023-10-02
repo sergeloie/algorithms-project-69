@@ -42,16 +42,11 @@ public class IDFtest {
                 Map.of("id", "garbage_patch_ocean_clean", "text", garbagePatchOceanClean),
                 Map.of("id", "garbage_patch_wiki", "text", garbagePatchWiki),
                 Map.of("id", "garbagePatchSpam", "text", garbagePatchSpam));
-
         String sentence = "shoot at me, nerd";
-
         System.out.println(search(docs1, sentence));
     }
 
     @Test
     void testIDF3() throws IOException {
-
     }
-
-
 }

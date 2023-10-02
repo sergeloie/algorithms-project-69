@@ -33,7 +33,6 @@ public class TFIDF2 {
     }
 
 
-
     public static double getSentenceTFIDF(List<Map<String, String>> docs,
                                           Map<String, String> doc,
                                           Map<String, Long> index,
@@ -64,20 +63,7 @@ public class TFIDF2 {
 
         double n = docs.size();
         double df = index.getOrDefault(word, 0L);
-
-
-
-
-        //Math.log2(1 + (docsCount - termCount + 1) / (termCount + 0.5));
-
-//        return Math.log((1 + (docs.size() - index.get(word) + 1)) / (index.get(word) + 0.5)) / Math.log(2);
-//        return Math.log((double) 1 + (docs.size() - index.get(word) + 1) / (double) (index.get(word) + 0.5));
-
-        //return (Math.log(1 + (docs.size() - index.get(word) + 1) / (index.get(word) + 0.5))) / Math.log(2);
-        //return Math.log((docs.size() + 1) / (index.get(word) + 0.5)) + 1;
         return Math.log(1 + (n - df + 1) / (df + 0.5)); // формула из ответа
-
-
     }
 
     public static double getTF(Map<String, String> doc, String word) {
@@ -110,8 +96,6 @@ public class TFIDF2 {
     }
 
 
-
-
     public static String getTermFromToken(String token) {
         return Pattern.compile("\\w+")
                 .matcher(token)
@@ -119,10 +103,6 @@ public class TFIDF2 {
                 .map(MatchResult::group)
                 .collect(Collectors.joining())
                 .toLowerCase();
-    }
-
-    public static long getNumberOfDocumentInCorpus(List<Map<String, String>> docs) {
-        return docs.size();
     }
 
     public static List<String> sortIndex(List<Map<String, Double>> index) {
@@ -134,8 +114,4 @@ public class TFIDF2 {
                 .map(x -> x.keySet().iterator().next())
                 .collect(Collectors.toList());
     }
-
-
-
-
 }
