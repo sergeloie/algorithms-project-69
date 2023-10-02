@@ -16,11 +16,11 @@ import static hexlet.code.TFIDF2.sortIndex;
 
 public class TFIDF2Test {
 
-    private final String garbagePatchNG = Files.readString(Path.of("src/test/resources/garbage_patch_NG.txt"));
+    private final String garbagePatchNG = Files.readString(Path.of("src/test/resources/garbage_patch_NG"));
     private final String garbagePatchOceanClean =
-            Files.readString(Path.of("src/test/resources/garbage_patch_ocean_clean.txt"));
-    private final String garbagePatchWiki = Files.readString(Path.of("src/test/resources/garbage_patch_wiki.txt"));
-    private final String garbagePatchSpam = Files.readString(Path.of("src/test/resources/garbage_patch_spam.txt"));
+            Files.readString(Path.of("src/test/resources/garbage_patch_ocean_clean"));
+    private final String garbagePatchWiki = Files.readString(Path.of("src/test/resources/garbage_patch_wiki"));
+    private final String garbagePatchSpam = Files.readString(Path.of("src/test/resources/garbage_patch_spam"));
     private final List<Map<String, String>> docs = List.of(
             Map.of("id", "garbage_patch_NG", "text", garbagePatchNG),
             Map.of("id", "garbage_patch_ocean_clean", "text", garbagePatchOceanClean),
