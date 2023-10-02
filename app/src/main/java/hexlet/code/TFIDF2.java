@@ -16,6 +16,9 @@ public class TFIDF2 {
                                                 Map<String, Long> index,
                                                 String sentence) {
 
+        double epsilon = 0.000001d;
+
+
         List<Map<String, Double>> docScores = new ArrayList<>();
         for (Map<String, String> doc : docs) {
             String docId = doc.get("id");
