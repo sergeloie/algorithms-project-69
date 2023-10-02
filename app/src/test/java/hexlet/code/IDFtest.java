@@ -48,5 +48,10 @@ public class IDFtest {
         System.out.println(search(docs1, sentence));
     }
 
+    @Test
+    void testIDF3() throws IOException {
+
+    }
+
 
 }
